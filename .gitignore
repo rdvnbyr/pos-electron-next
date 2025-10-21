@@ -1,0 +1,12 @@
+node_modules
+client/.next
+client/out
+.turbo
+dist
+*.log
+electron/dist
+
+# any logs /logs, or **/logs
+**/logs
+logs
+*.log

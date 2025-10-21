@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./client" },
+    { "path": "./electron" },
+    { "path": "./packages/shared-types" }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "pos-app",
+  "private": true,
+  "workspaces": ["client", "electron", "packages/*"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace electron\" \"npm run dev --workspace client\" \"npm run start:electron\"",
+    "start:electron": "wait-on tcp:3000 ./electron/dist/main/index.mjs ./electron/dist/preload/preload.mjs && cross-env RENDERER_URL=http://localhost:3000 electron ./electron/dist/main/index.mjs",
+    "build": "npm run build --workspace client && npm run build --workspace electron",
+    "lint": "npm run lint --workspace client"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^28.2.2",
+    "electron-builder": "^24.9.1",
+    "pino": "^8.15.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.4.5",
+    "wait-on": "^7.2.0"
+  }
+}
