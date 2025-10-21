@@ -8,7 +8,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@pos-app/shared-types": "workspace:*",
+    "@pos-app/shared-types": "file:../packages/shared-types",
     "pino": "^8.15.0"
   }
 }

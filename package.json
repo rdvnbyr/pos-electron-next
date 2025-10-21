@@ -3,9 +3,9 @@
   "private": true,
   "workspaces": ["client", "electron", "packages/*"],
   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace electron\" \"npm run dev --workspace client\" \"npm run start:electron\"",
+    "dev": "concurrently \"npm run dev --workspace pos-app-electron\" \"npm run dev --workspace client\" \"npm run start:electron\"",
     "start:electron": "wait-on tcp:3000 ./electron/dist/main/index.mjs ./electron/dist/preload/preload.mjs && cross-env RENDERER_URL=http://localhost:3000 electron ./electron/dist/main/index.mjs",
-    "build": "npm run build --workspace client && npm run build --workspace electron",
+    "build": "npm run build --workspace client && npm run build --workspace pos-app-electron",
     "lint": "npm run lint --workspace client"
   },
   "devDependencies": {
