@@ -6,6 +6,10 @@ import { ZvtClient, type ZvtConnectOptions } from './zvt/ZvtClient'
 export type RendererConnectPayload = {
   host: string
   port: number
+  terminalId?: string
+  connectionType: 'tcp' | 'serial'
+  currency: 'EUR' | 'USD'
+  password?: string
   tls?: {
     enabled: boolean
     caCertPem?: string
@@ -35,6 +39,10 @@ export class TerminalRuntime {
   }
 
   async connect(payload: RendererConnectPayload) {
+    if (payload.connectionType === 'serial') {
+      throw new Error('Serial connection type is not supported yet')
+    }
+
     const options: ZvtConnectOptions = {
       host: payload.host,
       port: payload.port,
@@ -47,6 +55,16 @@ export class TerminalRuntime {
         : { enabled: false },
       timeouts: payload.timeouts
     }
+    logger.info(
+      {
+        terminalId: payload.terminalId,
+        connectionType: payload.connectionType,
+        currency: payload.currency,
+        tlsEnabled: options.tls?.enabled,
+        hasPassword: Boolean(payload.password)
+      },
+      'renderer requested terminal connect'
+    )
     this.#client.connect(options)
   }
 

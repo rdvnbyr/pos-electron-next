@@ -6,6 +6,10 @@ declare global {
       connectTerminal: (config: {
         host: string
         port: number
+        terminalId?: string
+        connectionType: 'tcp' | 'serial'
+        currency: 'EUR' | 'USD'
+        password?: string
         tls?: { enabled: boolean; caCertPem?: string; rejectUnauthorized?: boolean }
         timeouts?: { connectMs?: number; idleMs?: number }
       }) => Promise<{ success: boolean; message?: string }>
