@@ -1,7 +1,11 @@
 {
   "name": "pos-app",
   "private": true,
-  "workspaces": ["client", "electron", "packages/*"],
+  "workspaces": [
+    "client",
+    "electron",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "concurrently \"npm run dev --workspace pos-app-electron\" \"npm run dev --workspace client\" \"npm run start:electron\"",
     "start:electron": "wait-on tcp:3000 ./electron/dist/main/index.mjs ./electron/dist/preload/preload.mjs && cross-env RENDERER_URL=http://localhost:3000 electron ./electron/dist/main/index.mjs",
