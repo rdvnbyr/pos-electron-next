@@ -14,6 +14,12 @@ declare global {
         timeouts?: { connectMs?: number; idleMs?: number }
       }) => Promise<{ success: boolean; message?: string }>
       disconnectTerminal: () => Promise<void>
+      startPayment: (payload: { amountCents: number; currency: 'EUR' | 'USD' }) => Promise<{
+        success: boolean
+        message?: string
+        rrn?: string
+        authCode?: string
+      }>
       onZvtEvent: (cb: (event: ZvtEvent) => void) => () => void
     }
   }
