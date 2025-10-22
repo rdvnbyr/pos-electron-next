@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "concurrently \"npm run dev --workspace pos-app-electron\" \"npm run dev --workspace client\" \"npm run start:electron\"",
     "start:electron": "wait-on tcp:3000 ./electron/dist/main/index.mjs ./electron/dist/preload/preload.mjs && cross-env RENDERER_URL=http://localhost:3000 electron ./electron/dist/main/index.mjs",
-    "build": "npm run build --workspace client && npm run build --workspace pos-app-electron",
-    "lint": "npm run lint --workspace client"
+    "build": "npm run build --workspace client && npm run make --workspace pos-app-electron",
+    "lint": "npm run lint --workspace client",
+    "make": "electron-builder --projectDir=./electron"
   },
   "devDependencies": {
     "@types/node": "^20.11.30",

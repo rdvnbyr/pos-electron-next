@@ -10,3 +10,22 @@ electron/dist
 **/logs
 logs
 *.log
+
+# .env files
+.env
+.env.*
+**/.env
+# OS generated files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# build output
+build/
+coverage/
+.nyc_output/
+.cache/
+.next/
+out/
+dist/
