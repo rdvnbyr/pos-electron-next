@@ -39,6 +39,19 @@ npm run dev
 
 The renderer will be served at `http://localhost:3000`, and Electron bootstraps once that port is ready.
 
+### Local Mock Terminal
+For development without a physical terminal, there is a simple TCP mock under `_mocks/mock-pos.js`. It accepts incoming APDUs and responds with basic status/completion frames.
+
+```bash
+# Terminal A (mock ZVT)
+node _mocks/mock-pos.js --host 0.0.0.0 --port 20007
+
+# Terminal B (POS app)
+npm run dev
+```
+
+In the POS UI set `Host` to `127.0.0.1` (or your LAN IP) and `Port` to `20007`. The mock prints activity to stdout so you can trace requests and responses.
+
 ### Building Production Bundles
 ```bash
 npm run build
