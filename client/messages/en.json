@@ -1,0 +1,8 @@
+{
+    "welcome": {
+        "message": "Welcome to our application!"
+    },
+    "goodbye": {
+        "message": "Goodbye!"
+    }
+}

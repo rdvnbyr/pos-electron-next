@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeModeScript } from "flowbite-react";
 import ThemeProviderWrapper from "@/components/providers/theme";
+import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,7 +33,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+        <NextIntlClientProvider>
+          <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
